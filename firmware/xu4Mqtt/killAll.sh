@@ -1,10 +1,10 @@
 #!/bin/bash
 
-kill $(pgrep -f 'icm20948WithPa1010dReader.py')
-sleep 1
+#kill $(pgrep -f 'icm20948WithPa1010dReader.py')
+#sleep 1
 
-kill $(pgrep -f 'gpsReader.py')
-sleep 1
+#kill $(pgrep -f 'gpsReader.py')
+#sleep 1
 
 kill $(pgrep -f 'ips7100Reader.py')
 sleep 1

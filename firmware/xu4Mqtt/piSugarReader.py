@@ -66,5 +66,5 @@ if __name__ == "__main__":
     print("=============")
     print("    MINTS    ")
     print("=============")
-    print("Monitoring Battery level for Mints Wearable Node")
+    print("Monitoring Battery level for Minty Cube")
     main(loopInterval)
