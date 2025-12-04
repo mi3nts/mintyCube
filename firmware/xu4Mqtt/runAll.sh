@@ -2,22 +2,22 @@
 
 sleep 60
 
-kill $(pgrep -f 'icm20948WithPa1010dReader.py')
-sleep 5
-python3 icm20948WithPa1010dReader.py &
-sleep 5
+#kill $(pgrep -f 'icm20948WithPa1010dReader.py')
+#sleep 5
+#python3 icm20948WithPa1010dReader.py &
+#sleep 5
 
-kill $(pgrep -f 'gpsReader.py')
-sleep 5
-python3 gpsReader.py &
-sleep 5
+#kill $(pgrep -f 'gpsReader.py')
+#sleep 5
+#python3 gpsReader.py &
+#sleep 5
 
 kill $(pgrep -f 'ips7100Reader.py')
 sleep 5
 python3 ips7100Reader.py &
 sleep 5
 
-kill $(pgrep -f 'bme280WithCht8305cReader.py')
+kill $(pgrep -f 'bme280.py')
 sleep 5
 python3 bme280WithCht8305cReader.py &
 sleep 5
