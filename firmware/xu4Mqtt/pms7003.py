@@ -1,7 +1,7 @@
 import serial
 import time
 
-baudrate = 9600
+baudRate = 9600
 portIn = "/dev/ttyACM0" #probably needs to be dynamically found? maybe?
 
 ser = serial.Serial(
@@ -14,18 +14,23 @@ ser = serial.Serial(
 
 print(f"PMS7003 connected to {ser.port} at {ser.baudrate} baud.")
 
-line = []
-
 def main():
+    line = []
     while True:
         try:
             for c in ser.read():
                 line.append(chr(c))
                 if chr(c) == '\n':
-                    if line.len() < 32:
+                    if len(line) < 32:
                         continue
-                    print(line)
+                    print("".join(line))
                     line = []
+        except KeyboardInterrupt:
+            print("Exiting...")
+            break
+        except Exception as e:
+            print("Error:", e)
+            break
 
 if __name__ == "__main__":
     print("MINTS")
