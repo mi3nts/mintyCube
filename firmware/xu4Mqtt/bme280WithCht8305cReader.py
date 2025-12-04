@@ -19,7 +19,7 @@
 #  ***************************************************************************
 
 
-
+import csv
 import sys
 import time
 import os
@@ -56,6 +56,9 @@ def main(loopInterval):
             print("======= BME280V3 ========")
             if bme280v3_valid:
                 mSR.BME280V3WriteI2c(bme280v3.read())
+                # with open("bme280.csv", "w") as outfile:
+                    # csvwriter = csv.writer(outfile)
+                    # csvwriter.writerow(myDict)
             time.sleep(1)     
             
             # print("======= TMP117 ========")

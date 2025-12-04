@@ -552,8 +552,11 @@ def BME280V3WriteI2c(sensorData):
             	("dewPoint"     ,sensorData[4]),
             	("altitude"     ,sensorData[5])
                 ])
-        sensorFinisher(sensorData[0],sensorName,sensorDictionary)     
-
+        # with open("bme280.csv", "w") as outfile:
+            #csvwriter = csv.writer(outfile)
+            #csvwriter.writerow(dict(sensorDictionary))
+            #csvwriter.writerow(dict(sensorDictionary).values()) # temp write to .csv file REMOVE OR EDIT THIS
+        sensorFinisher(sensorData[0],sensorName,sensorDictionary)
 
 def IPS7100WriteI2c(sensorData):
     sensorName = "IPS7100"

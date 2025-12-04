@@ -31,7 +31,6 @@ mqtt_client = mqttClient.Client()
 def on_connect(client, userdata, flags, rc):
     global connected  # Use global variable
     if rc == 0:
-
         print("[INFO] Connected to broker")
         connected = True  # Signal connection
     else:
