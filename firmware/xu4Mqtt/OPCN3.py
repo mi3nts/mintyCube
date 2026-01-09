@@ -7,10 +7,10 @@ import time
 spi = spidev.SpiDev()
 
 def main():
-    opc3_init()
-    read_immediate()
+    opcn3_init()
+    read_status()
 
-def opc3_init():
+def opcn3_init():
     spi.open(0, 0)
 
     spi.max_speed_hz = 1000000 # 1 MHz
@@ -24,9 +24,14 @@ def opc3_init():
     # Close the bus when finished
 
 def read_status():
-    response = spi.xfer(0x13)
+    time.sleep(0.01)
+    response = spi.xfer({0x13, 0x13, 0x13, 0x13, 0x13})
     print(response)
 
+def read_firmware():
+    time.sleep(0.01)
+    response = spi.xfer({0x12, 0x12, 0x12})
+    print(response)
 
 if __name__ == "__main__":
     print("==========================")
