@@ -1,18 +1,36 @@
 import spidev
 import time
 
-# Open SPI bus 0, device 0 (CE0)
+# This library has NOT been tested in tandem with other SPI devices
+# In the case of having multiple SPI devices, chip select will need to be handled
+
 spi = spidev.SpiDev()
-spi.open(0, 0)
 
-# Configure speed and mode
-spi.max_speed_hz = 1000000 # 1 MHz
-spi.mode = 0
+def main():
+    opc3_init()
+    read_immediate()
 
-# Send data and receive response
-data_to_send = [0x01, 0x02, 0x03]
-response = spi.xfer(data_to_send)
-print("Received:", response)
+def opc3_init():
+    spi.open(0, 0)
 
-# Close the bus when finished
-spi.close()
+    spi.max_speed_hz = 1000000 # 1 MHz
+    spi.mode = 0
+
+    # Send data and receive response
+    # data_to_send = [0x01, 0x02, 0x03]
+    # response = spi.xfer(data_to_send)
+    # print("Received:", response)
+
+    # Close the bus when finished
+
+def read_status():
+    response = spi.xfer(0x13)
+    print(response)
+
+
+if __name__ == "__main__":
+    print("==========================")
+    print("MINTS Python OPC N3 Reader")
+    print("==========================")
+    main()
+
