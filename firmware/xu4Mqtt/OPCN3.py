@@ -25,12 +25,12 @@ def opcn3_init():
 
 def read_status():
     time.sleep(0.01)
-    response = spi.xfer({0x13, 0x13, 0x13, 0x13, 0x13})
+    response = spi.xfer2([0x13, 0x13, 0x13, 0x13, 0x13])
     print(response)
 
 def read_firmware():
     time.sleep(0.01)
-    response = spi.xfer({0x12, 0x12, 0x12})
+    response = spi.xfer([0x12, 0x12, 0x12])
     print(response)
 
 if __name__ == "__main__":
