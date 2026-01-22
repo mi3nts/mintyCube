@@ -6,6 +6,11 @@ import time
 
 spi = spidev.SpiDev()
 
+def test():
+    opcInit()
+    readSample()
+    readStatus()
+
 def main():
     opcInit()
     readStatus()
@@ -13,7 +18,6 @@ def main():
 
 def opcInit():
     spi.open(0, 0)
-
     spi.max_speed_hz = 1000000 # 1 MHz
     spi.mode = 1
 
@@ -26,9 +30,14 @@ def readStatus():
 
 def readFirmware():
     time.sleep(0.01)
-    response = spi.xfer([0x12])
+    spi.xfer([0x12])
     response = spi.xfer2([0x00]*3)
     print(response)
+
+def readSample():
+    time.sleep(0.01)
+    spi.xfer([0x03])
+    response = spi.xfer([])
 
 if __name__ == "__main__":
     print("==========================")
