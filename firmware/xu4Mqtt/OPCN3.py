@@ -41,8 +41,7 @@ def fanOn():
 
 def fanOff():
     time.sleep(0.01)
-    spi.xfer2([0x03, 0x05])
-    response = spi.xfer2([0x00]*2)
+    response = spi.xfer2([0x03, 0x05, 0x00, 0x00])
     print(response)
 
 def readFirmware():
