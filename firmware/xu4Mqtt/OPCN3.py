@@ -35,8 +35,7 @@ def readStatus():
 
 def fanOn():
     time.sleep(0.01)
-    spi.xfer2([0x03, 0x04])
-    response = spi.xfer2([0x00]*2)
+    response = spi.xfer2([0x03, 0x04, 0x00, 0x00])
     print(response)
 
 def fanOff():
