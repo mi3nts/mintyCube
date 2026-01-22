@@ -27,6 +27,11 @@ def readStatus():
     response = spi.xfer2([0x00]*5) 
     print(response)
 
+def fanOn():
+    time.sleep(0.01)
+    spi.xfer2([0x03, 0x04])
+    response = spi.xfer2([0x00]*2)
+    print(response)
 
 def readFirmware():
     time.sleep(0.01)
