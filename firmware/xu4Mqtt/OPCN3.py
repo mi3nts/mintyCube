@@ -8,8 +8,14 @@ spi = spidev.SpiDev()
 
 def test():
     opcInit()
-    readSample()
-    readStatus()
+    startSampling()
+    while(True):
+        fanOn()
+        print("FAN ON")
+        time.sleep(3)
+        fanOff()
+        print("FAN OFF")
+        time.sleep(3)
 
 def main():
     opcInit()
@@ -30,6 +36,12 @@ def readStatus():
 def fanOn():
     time.sleep(0.01)
     spi.xfer2([0x03, 0x04])
+    response = spi.xfer2([0x00]*2)
+    print(response)
+
+def fanOff():
+    time.sleep(0.01)
+    spi.xfer2([0x03, 0x05])
     response = spi.xfer2([0x00]*2)
     print(response)
 
