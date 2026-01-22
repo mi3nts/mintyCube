@@ -36,12 +36,13 @@ def readFirmware():
 
 def readSample():
     time.sleep(0.01)
-    spi.xfer([0x03])
-    response = spi.xfer([])
+    spi.xfer([0x32])
+    response = spi.xfer([0x00]*13)
+    print(response)
 
 if __name__ == "__main__":
     print("==========================")
     print("MINTS Python OPC N3 Reader")
     print("==========================")
-    main()
+    test()
 
