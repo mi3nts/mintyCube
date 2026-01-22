@@ -31,8 +31,9 @@ def readStatus():
 
 def readFirmware():
     time.sleep(0.01)
-    response = spi.xfer([0x12, 0x12, 0x12])
-    print(response.chr())
+    response = spi.xfer([0x12])
+    response = spi.xfer2([0x00]*3)
+    print(response)
 
 if __name__ == "__main__":
     print("==========================")
