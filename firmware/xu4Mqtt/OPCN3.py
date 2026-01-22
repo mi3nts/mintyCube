@@ -9,13 +9,10 @@ spi = spidev.SpiDev()
 def test():
     opcInit()
     startSampling()
+    time.sleep(2)
     while(True):
-        fanOn()
-        print("FAN ON")
-        time.sleep(3)
-        fanOff()
-        print("FAN OFF")
-        time.sleep(3)
+        readStatus()
+        readSample()
 
 def main():
     opcInit()
