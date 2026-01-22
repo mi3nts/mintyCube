@@ -13,6 +13,7 @@ def test():
     while(True):
         readStatus()
         readSample()
+        time.sleep(0.5)
 
 def main():
     opcInit()
@@ -26,8 +27,7 @@ def opcInit():
 
 def readStatus():
     time.sleep(0.01)
-    spi.xfer2([0x13])               
-    response = spi.xfer2([0x00]*5) 
+    response = spi.xfer2([0x13] + 5*[0x00])                
     print(response)
 
 def fanOn():
@@ -42,8 +42,7 @@ def fanOff():
 
 def readFirmware():
     time.sleep(0.01)
-    spi.xfer2([0x12])
-    response = spi.xfer2([0x00]*3)
+    response = spi.xfer2([0x12] + 3*[0x00])
     print(response)
 
 def startSampling():
@@ -52,8 +51,7 @@ def startSampling():
 
 def readSample():
     time.sleep(0.01)
-    spi.xfer([0x32])
-    response = spi.xfer2([0x00]*13)
+    response = spi.xfer([0x32] + 13*[0x00])
     print(response)
 
 if __name__ == "__main__":
