@@ -8,8 +8,7 @@ spi = spidev.SpiDev()
 
 def test():
     opcInit()
-    startSampling()
-    time.sleep(2)
+    startSampling() # includes wait
     while(True):
         readStatus()
         readSample()
@@ -22,35 +21,36 @@ def main():
 
 def opcInit():
     spi.open(0, 0)
-    spi.max_speed_hz = 100000 # 100 kHz
+    spi.max_speed_hz = 500000 # 100 kHz
     spi.mode = 1
 
 def readStatus():
-    time.sleep(0.01)
+    time.sleep(0.02)
     response = spi.xfer2([0x13] + 5*[0x00])                
     print(response)
 
 def fanOn():
-    time.sleep(0.01)
+    time.sleep(0.02)
     response = spi.xfer2([0x03, 0x04, 0x00, 0x00])
     print(response)
 
 def fanOff():
-    time.sleep(0.01)
+    time.sleep(0.02)
     response = spi.xfer2([0x03, 0x05, 0x00, 0x00])
     print(response)
 
 def readFirmware():
-    time.sleep(0.01)
+    time.sleep(0.02)
     response = spi.xfer2([0x12] + 3*[0x00])
     print(response)
 
 def startSampling():
-    time.sleep(0.01)
+    time.sleep(0.02)
     spi.xfer2([0x03])
+    time.sleep(2)
 
 def readSample():
-    time.sleep(0.01)
+    time.sleep(0.02)
     response = spi.xfer2([0x32] + 13*[0x00])
     print(response)
 
