@@ -22,7 +22,7 @@ def main():
 
 def opcInit():
     spi.open(0, 0)
-    spi.max_speed_hz = 1000000 # 1 MHz
+    spi.max_speed_hz = 100000 # 100 kHz
     spi.mode = 1
 
 def readStatus():
@@ -51,7 +51,7 @@ def startSampling():
 
 def readSample():
     time.sleep(0.01)
-    response = spi.xfer([0x32] + 13*[0x00])
+    response = spi.xfer2([0x32] + 13*[0x00])
     print(response)
 
 if __name__ == "__main__":
