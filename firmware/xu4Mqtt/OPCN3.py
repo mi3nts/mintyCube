@@ -47,18 +47,18 @@ def fanOff():
 
 def readFirmware():
     time.sleep(0.01)
-    spi.xfer([0x12])
+    spi.xfer2([0x12])
     response = spi.xfer2([0x00]*3)
     print(response)
 
 def startSampling():
     time.sleep(0.01)
-    spi.xfer([0x03])
+    spi.xfer2([0x03])
 
 def readSample():
     time.sleep(0.01)
     spi.xfer([0x32])
-    response = spi.xfer([0x00]*13)
+    response = spi.xfer2([0x00]*13)
     print(response)
 
 if __name__ == "__main__":
