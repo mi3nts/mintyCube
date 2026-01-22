@@ -27,7 +27,7 @@
  }
 
 // Alpha Sensor Functions
- void OPCN3Mints::begin()
+void OPCN3Mints::begin()
 {
     printMintsBegin();
     Serial.println("Initiating SPI ");
@@ -41,7 +41,6 @@
     delay(400);
     Serial.println("---------------------------- ");
     printMintsEnd();
-
 }
 
 
@@ -70,12 +69,6 @@ bool OPCN3Mints::initialize(){
         return (fanState.valid&&reset)&&(laserState.valid&&gainState.valid);
 
   }
-
-
-
-
-
-
 
   struct fanDigitalPotShutdownState OPCN3Mints::setFanDigitalPotShutdownState(bool status) {
 
@@ -340,7 +333,6 @@ printMintsBegin();
          printMintsEnd();
 
 return dataOutput;
-
 }
 
 

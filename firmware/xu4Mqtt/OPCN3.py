@@ -7,10 +7,11 @@ import time
 spi = spidev.SpiDev()
 
 def main():
-    opcn3_init()
-    read_status()
+    opcInit()
+    readStatus()
+    readFirmware()
 
-def opcn3_init():
+def opcInit():
     spi.open(0, 0)
 
     spi.max_speed_hz = 1000000 # 1 MHz
@@ -21,17 +22,17 @@ def opcn3_init():
     # response = spi.xfer(data_to_send)
     # print("Received:", response)
 
-    # Close the bus when finished
-
-def read_status():
+def readStatus():
     time.sleep(0.01)
-    response = spi.xfer2([0x13, 0x13, 0x13, 0x13, 0x13])
+    spi.xfer2([0x13])               
+    response = spi.xfer2([0x00]*5) 
     print(response)
 
-def read_firmware():
+
+def readFirmware():
     time.sleep(0.01)
     response = spi.xfer([0x12, 0x12, 0x12])
-    print(response)
+    print(response.chr())
 
 if __name__ == "__main__":
     print("==========================")

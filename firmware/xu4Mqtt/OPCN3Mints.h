@@ -11,7 +11,6 @@ private:
     uint8_t alphaSlavePin;
 
 public:
-
   OPCN3Mints(uint8_t chipSelect);
   // Alpha Sensor Functions
   void begin();
@@ -243,7 +242,6 @@ public:
       float pm10   ;
       uint16_t checkSum ;
       bool valid;
-
   };
 
 #endif
