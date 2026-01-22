@@ -15,12 +15,7 @@ def opcInit():
     spi.open(0, 0)
 
     spi.max_speed_hz = 1000000 # 1 MHz
-    spi.mode = 0
-
-    # Send data and receive response
-    # data_to_send = [0x01, 0x02, 0x03]
-    # response = spi.xfer(data_to_send)
-    # print("Received:", response)
+    spi.mode = 1
 
 def readStatus():
     time.sleep(0.01)
