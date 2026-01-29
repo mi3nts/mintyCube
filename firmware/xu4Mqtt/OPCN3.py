@@ -16,7 +16,7 @@ def test():
 
 def main():
     opcInit()
-    fanOn()
+    fanOnLaserOn()
     readStatus()
     readFirmware()
 
@@ -31,9 +31,9 @@ def readStatus():
     response = spi.xfer2([0x13] + 5*[0x00])                
     print(response)
 
-def fanOn():
+def fanOnLaserOn():
     time.sleep(0.02)
-    response = spi.xfer2([0x03, 0x04, 0x00, 0x00])
+    response = spi.xfer2([0x03, 0x00, 0x00, 0x00])
     print(response)
     time.sleep(1)
 
