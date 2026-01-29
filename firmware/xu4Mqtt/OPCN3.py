@@ -54,9 +54,13 @@ def startSampling():
 
 def readSample():
     time.sleep(0.02)
-    response = spi.xfer2([0x32] + 13*[0x00])
+    response = spi.xfer2([0x32] + 50*[0x00])
     print(response)
 
+def readInformationString():
+    time.sleep(0.02)
+    response = spi.xfer2([0x3F] + 60*[0x00])
+    print(response)
 if __name__ == "__main__":
     print("==========================")
     print("MINTS Python OPC N3 Reader")
