@@ -11,7 +11,8 @@ def test():
     startSampling() # includes wait
     while(True):
         readStatus()
-        #readSample()
+        readSample()
+        #readInformationString()
         time.sleep(1)
 
 def main():
